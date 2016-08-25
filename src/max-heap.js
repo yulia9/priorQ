@@ -22,12 +22,11 @@ class MaxHeap {
 			}
 	   else if (this._size) {
 			this.parentNodes.pop();
-			return this.parentNodes.pop()
+			return this.parentNodes.pop();
 			}
             this.restoreRootFromLastInsertedNode(detached); 
 			this.shiftNodeDown(this.root);
-			return detached.data
-    	
+			return detached.data;
     	}
     
 
@@ -138,11 +137,11 @@ class MaxHeap {
 				}
 		   } else {
 				var maxNodeChildPriority = node.left.priority;
-				var maxNodeChild = node.left
+				var maxNodeChild = node.left;
 				}
 		 }
 		 if (node.priority < maxNodeChildPriority) {
-			maxNodeChild.swapWithParent()
+			maxNodeChild.swapWithParent();
 		 }
 		
 		this.shiftNodeDown(node) 

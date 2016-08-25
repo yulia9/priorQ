@@ -2,8 +2,9 @@ const Node = require('./node');
 
 class MaxHeap {
 	constructor() {
-		this.root=null;
-		this.parentNodes=[];
+		this.root = null;
+		this.parentNodes = [];
+		this._size = 0;
 		
 
 	}
@@ -16,63 +17,87 @@ class MaxHeap {
 	}
     
     pop () {
-    	if (this.root!=null) {
-    		var currentNode = this.root;
-    		return currentNode.data}
-    		this.detachRoot();
-    		
-    	
-    }
+    	if (this._size === null) {
+    		return;
+    	} else {
+    		this.parentNodes.pop();
+    		this._size--;
+
+    	}
+    	}
+    
 
 
 
 	detachRoot() {
-		var currentNode=this.root;
-		this.root=null;
+		var currentNode = this.root; 
+		this.root = null;
 		return currentNode;
 		
 	}
 
 	restoreRootFromLastInsertedNode(detached) {
-		var detached=this.detachRoot();
-		var lastInsertedNode = this.push();
-		lastInsertedNode= detached;
+		this.detachRoot();
+		var lastInsertedNode = this.parentNodes.pop();
+		this.root = lastInsertedNode;
+		this.root.left = this.left;
+		this.left.parent = lastInsertedNode;
+		delete this.parentNodes.pop()
 	
 	}
 
 	size() {
-		return this.parentNodes.length
+		return this._size;
 	}
 
 	isEmpty() {
-		if (this.root == null){
-			return true}
-		else {
-		    return false}
+		if (this._size === null){
+			return true;
+		} else {
+		    return false;
+		}
 	}
 
 	clear() {
-		var currentNode=this.root;
-		this.root=null;
-		this.parentNodes=[]
-		
+		this.root = null;
+		this.parentNodes = [];
+		this._size = 0;
 	}
 
 	insertNode(node) {
-		if (this.root==null) {
+		if (this.root === null) {
 			this.root = node;
 			this.parentNodes[0]=node;
-			
+		} else {
+			this.parentNodes[0].appendChild(node);
+			this.parentNodes.push(node);
+			if (this.parentNodes[0].right !== null) {
+				this.parentNodes.shift();
+			}
 		}
-		
+		this._size++;
 	}
 
 	shiftNodeUp(node) {
-		
-	}
+	
+		if (this.root !== node) {
+			if (node.parent !== this.root) {
+				node.swapWithParent();
+			} else {
+				this.root = node;
+				this.parentNodes[0] = this.root;
+
+			}
+			node.shiftNodeUp(node);
+			} 
+			}
+	
+	
 
 	shiftNodeDown(node) {
-		
+		if (this.root !== null) {
+			
+		}
 	}
 }
 

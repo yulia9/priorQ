@@ -40,8 +40,7 @@ class Node {
 		}
 
 	}
-
-	swapWithParent() {
+     swapWithParent ()	{	
 		if (this.parent === null) {
 			return;
 		}
@@ -78,6 +77,7 @@ class Node {
 		}
 
 	} 
+	
 }
 
 module.exports = Node;

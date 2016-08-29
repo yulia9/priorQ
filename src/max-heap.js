@@ -140,7 +140,7 @@ class MaxHeap {
 					this.parentNodes[indexChild] = node;
 				}
 				if (indexParent !== -1) {
-					this.parentNodes[index] = node.right;
+					this.parentNodes[indexParent] = node.right;
 				}
 				node.right.swapWithParent();
 				this.shiftNodeDown(node);

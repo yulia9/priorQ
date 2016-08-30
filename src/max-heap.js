@@ -60,7 +60,9 @@ class MaxHeap {
 		this.root.right = detached.right;
 		if (this.root.right) {
 			this.root.right.parent = this.root;
-		} 
+		} else if (!this.root.right) {
+			this.parentNodes.unshift (this.root);
+		}
 		this.root.parent = null;
 			
 	}

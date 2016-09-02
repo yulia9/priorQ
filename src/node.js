@@ -57,6 +57,7 @@ class Node {
 
 		var leftChild = this.left;
 		var rightChild = this.right;
+		
 		if (parent.left === this) {
 			this.left = parent;
 			this.right = parent.right;
@@ -73,6 +74,12 @@ class Node {
 		parent.parent = this;
 		parent.left = leftChild;
 		parent.right = rightChild;
+		if (this.right) {
+			this.right.parent = this;
+		}
+		if (this.left) {
+			this.left.parent = this;
+		}
 		if (parent.right) {
 			parent.right.parent = parent;
 		}
